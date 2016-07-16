@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Data Set Analyzer App</title>
   <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Data Set Analyzer App">
+  <meta name="author" content="Alexander Sickert">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -32,9 +32,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1></h1>
-    <h2></h2>
-    <p><br/></p>
+    <h1>Data Set Analyzer App</h1>
+    <h2>Project Overview</h2>
+    <p>Alexander Sickert<br/>Future R Specialist</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,14 +43,16 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>The Idea</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <p>When people start studying linear regression, then some of them struggle to establish a &quot;feeling&quot; for data. On the other side, a lot of regression classes are based on the same dta sets like airpollution, mtcars, iris, ChickWeight. </p>
+
+<p>Wouldn&#39;t it be nice to have a tool that can display all these datasets in an interactive way? So that one can get a better feeling for the data and how variables relate to each other. This is the aim of <strong>Data Set Analyzer App</strong></p>
+
+<p>More of these typical data sets can  be found here: </p>
+
+<p><a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html</a></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -58,10 +60,64 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>How it works</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>The current version of the app can only load the dataset mtcars. From that dataset you can compare the miles per gallon vriable with any other variable of the dataset. This is being done by a drop-down input box. </p>
+
+<p>The result is then displayed in a xy plot. </p>
+
+<p>It allows to get a better feeling for the correlation of the two variables</p>
+
+<p>Cou can find the current development stage of the app here:</p>
+
+<p><a href="https://alexandersickert.shinyapps.io/CourseraDataProductsApp/">https://alexandersickert.shinyapps.io/CourseraDataProductsApp/</a> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>The Code Behind</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>After slecting a variable the plot is being generated. In addition coefficients are being calcualted. The code behind is showe din the follwoing lines and an example calculation is being carried out. </p>
+
+<pre><code class="r">data(mtcars)
+
+parameter_that_was_chosen_in_dropdown &lt;- &quot;wt&quot;
+x &lt;- mtcars[,parameter_that_was_chosen_in_dropdown]
+lm &lt;- lm(mtcars$mpg ~ x)
+intercept &lt;- lm$coefficients[1]
+coefficient &lt;- lm$coefficients[2]
+text &lt;-c(&quot;linear model intercept: &quot;, intercept, &quot;linear model coefficient: &quot;, coefficient)
+paste(text,  collapse=&quot; &quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;linear model intercept:  37.285126167342 linear model coefficient:  -5.34447157272267&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Contact</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For more information and suggestions you can contact us: </p>
+
+<p>Alex Sickert<br>
+Data Set Analyzer App inc.<br>
+Way to heaven 99<br>
+Honolulu<br>
+Hawaii<br>
+USA  </p>
+
+<p>Phone: 12345678</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -72,14 +128,26 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='The Idea'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='How it works'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The Code Behind'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Contact'>
+         4
       </a>
     </li>
   </ul>

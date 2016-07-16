@@ -1,9 +1,9 @@
 ---
-title       : 
-subtitle    : 
-author      : 
-job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+title       : Data Set Analyzer App
+subtitle    : Project Overview
+author      : Alexander Sickert
+job         : Future R Specialist
+framework   : io2012     # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
@@ -11,15 +11,71 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+## The Idea
+
+When people start studying linear regression, then some of them struggle to establish a "feeling" for data. On the other side, a lot of regression classes are based on the same dta sets like airpollution, mtcars, iris, ChickWeight. 
+
+Wouldn't it be nice to have a tool that can display all these datasets in an interactive way? So that one can get a better feeling for the data and how variables relate to each other. This is the aim of **Data Set Analyzer App**
+
+
+More of these typical data sets can  be found here: 
+
+https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html
+
 
 --- .class #id 
 
-## Slide 2
+## How it works
+
+The current version of the app can only load the dataset mtcars. From that dataset you can compare the miles per gallon vriable with any other variable of the dataset. This is being done by a drop-down input box. 
+
+The result is then displayed in a xy plot. 
+
+It allows to get a better feeling for the correlation of the two variables
+
+Cou can find the current development stage of the app here:
+
+https://alexandersickert.shinyapps.io/CourseraDataProductsApp/ 
+
+--- .class #id 
+
+## The Code Behind
+
+After slecting a variable the plot is being generated. In addition coefficients are being calcualted. The code behind is showe din the follwoing lines and an example calculation is being carried out. 
+
+```{r }
+
+data(mtcars)
+
+parameter_that_was_chosen_in_dropdown <- "wt"
+x <- mtcars[,parameter_that_was_chosen_in_dropdown]
+lm <- lm(mtcars$mpg ~ x)
+intercept <- lm$coefficients[1]
+coefficient <- lm$coefficients[2]
+text <-c("linear model intercept: ", intercept, "linear model coefficient: ", coefficient)
+paste(text,  collapse=" ")
+
+
+```
+
+
+
+
+--- .class #id 
+
+## Contact
+
+For more information and suggestions you can contact us: 
+
+Alex Sickert  
+Data Set Analyzer App inc.  
+Way to heaven 99  
+Honolulu  
+Hawaii  
+USA  
+
+Phone: 12345678
 
 
 
